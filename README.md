@@ -1,7 +1,8 @@
 # Freelanzia
 
 # Contributers
-Add your name contributers 
+
+Add your name contributers
 
 Shaurya Kajla
 <br>
@@ -10,3 +11,7 @@ Kanika Tiwari
 Prasansa Gupta
 <br>
 Likhit Meshram
+<br>
+Dhiraj kumar
+<br>
+Kanchan
