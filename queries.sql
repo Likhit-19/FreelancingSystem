@@ -37,7 +37,7 @@ create view FreelancerDashboard as
 SELECT  b.bid_id , 
     b.job_id, 
     b.freelancer_id, 
-    b.bid_amount ,b.status,f.avg_rating FROM Bids AS b JOIN FreelancerDashboard AS f ON b.freelancer_id=f.freelancer_id WHERE f.avg_rating >= RATING ORDER BY f.avg_rating DESC;
+    b.bid_amount ,b.status,f.avg_rating FROM Bids AS b JOIN FreelancerDashboard AS f ON b.freelancer_id=f.freelancer_id WHERE f.avg_rating >= RATING AND b.job_id = JOB_ID AND b.status = 'Pending' ORDER BY f.avg_rating DESC;
 
 CREATE VIEW ClientDashboard AS
     SELECT c.client_id ,
