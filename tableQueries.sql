@@ -4,7 +4,8 @@ CREATE TABLE Bids (
     freelancer_id INT NOT NULL, 
     bid_amount DECIMAL(10,2) NOT NULL CHECK (bid_amount > 0), 
     status ENUM('Pending', 'Accepted', 'Rejected') DEFAULT 'Pending', 
-    bid_date DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  
     CONSTRAINT fk_bid_job  
         FOREIGN KEY (job_id) REFERENCES Jobs(job_id) 
