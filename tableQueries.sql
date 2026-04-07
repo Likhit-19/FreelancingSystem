@@ -2,6 +2,7 @@
 -- creating database
 CREATE database IF NOT EXISTS FreelancePlatform;
 
+
 USE FreelancePlatform ;
 -- Table: Users
 CREATE TABLE Users (
@@ -83,9 +84,8 @@ CREATE TABLE FreelancerSkills (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
---TAble : JobPosts
-
-CREATE TABLE job_posts(
+-- table jobs
+CREATE TABLE Jobs(
     job_id INT PRIMARY KEY AUTO_INCREMENT,
     client_id INT NOT NULL,
     title VARCHAR(150) NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE job_posts(
     CONSTRAINT unique_bid UNIQUE (job_id, freelancer_id) 
 ); 
 
---Contracts table
+-- Contracts table
 CREATE TABLE Contracts ( 
     contract_id INT PRIMARY KEY AUTO_INCREMENT, 
     job_id INT NOT NULL, 
@@ -153,7 +153,7 @@ start_date),
     CONSTRAINT unique_active_contract UNIQUE (job_id, freelancer_id) 
 );  
 
---milestone table
+-- milestone table
 CREATE TABLE Milestones (
     milestone_id INT PRIMARY KEY,
     
@@ -173,10 +173,7 @@ CREATE TABLE Milestones (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
-INDEX idx_contract_id (contract_id),
-    INDEX idx_status (status),
-    INDEX idx_due_date (due_date)
-);
+
 
 
 
@@ -203,27 +200,23 @@ CREATE TABLE Payments (
 
 CREATE TABLE Reviews (
 review_id INT PRIMARY KEY AUTO_INCREMENT,
-contract_id INT NOT NULL,
-reviewer_id INT NOT NULL,
+job_id INT NOT NULL,
 reviewee_id INT NOT NULL,
 rating INT NOT NULL,
 comment TEXT,
 
 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-FOREIGN KEY (contract_id) REFERENCES Contracts(contract_id)
+FOREIGN KEY (job_id) REFERENCES Jobs(job_id)
 ON DELETE CASCADE,
 
-FOREIGN KEY (reviewer_id) REFERENCES Users(user_id)
-ON DELETE CASCADE,
 
 FOREIGN KEY (reviewee_id) REFERENCES Users(user_id)
 ON DELETE CASCADE,
 
 CHECK (rating >= 1 AND rating <= 5),
-CHECK (reviewer_id <> reviewee_id),
-UNIQUE (contract_id, reviewer_id)
+UNIQUE (job_id, reviewee_id),
 
 INDEX idx_rating (rating)
 );
@@ -251,33 +244,28 @@ CHECK (CHAR_LENGTH(message_text) > 0)
 );
 
   
-  --Admin_Action
+  -- Admin_Action
   CREATE TABLE admin_actions (
     action_id INT PRIMARY KEY AUTO_INCREMENT,
     admin_id INT NOT NULL,
     action_type VARCHAR(100) NOT NULL,
     action_description TEXT,
     action_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (admin_id) REFERENCES admins(admin_id) ON DELETE CASCADE
+    FOREIGN KEY (admin_id) REFERENCES Users(user_id) ON DELETE CASCADE
   
   );
   
   -- Collaboration table 
 CREATE TABLE Collaboration (
-    job_id INT PRIMARY KEY,
+    job_id INT ,
     freelancer_id INT,
-    review_date DATE,
 
-    
-
-    FOREIGN KEY (job_id) REFERENCES JobPosts(job_id)
+    FOREIGN KEY (job_id) REFERENCES Jobs(job_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
 
     FOREIGN KEY (freelancer_id) REFERENCES Freelancers(freelancer_id)
         ON DELETE CASCADE
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE
 
-    
-    CHECK (review_date IS NULL OR review_date <= CURRENT_DATE)
 );
