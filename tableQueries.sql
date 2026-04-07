@@ -1,5 +1,8 @@
 -- This file contains queries for table creation
+-- creating database
+CREATE database IF NOT EXISTS FreelancePlatform;
 
+USE FreelancePlatform ;
 -- Table: Users
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
