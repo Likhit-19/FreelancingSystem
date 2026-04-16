@@ -945,43 +945,72 @@ INSERT INTO Payments (payment_id, milestone_id, amount, payment_date, payment_st
 (36,36,200,'2025-01-18','Paid'),
 (37,37,500,'2025-01-23','Pending');
 
-INSERT INTO Reviews (job_id, reviewee_id, rating, comment) VALUES
+INSERT INTO Reviews (job_id, reviewer_id, reviewee_id, rating, comment) VALUES
 
-(19,28,5,'Excellent work'),
-(19,35,4,'Very professional'),
+-- Job 31
+(31, 31, 141, 5, 'Excellent work, very satisfied'),
+(31, 141, 31, 4, 'Clear requirements and good client'),
 
-(20,15,4,'Good job'),
-(20,25,5,'Outstanding'),
+-- Job 33
+(33, 33, 143, 4, 'Good work overall'),
+(33, 143, 33, 5, 'Great client, smooth experience'),
 
-(26,40,5,'Fantastic execution'),
-(26,50,4,'Nice collaboration'),
+-- Job 36
+(36, 36, 146, 5, 'Fantastic execution'),
+(36, 146, 36, 4, 'Nice collaboration'),
 
-(31,22,4,'Very good delivery'),
-(31,32,5,'Highly recommended'),
+-- Job 38
+(38, 38, 148, 4, 'Very good delivery'),
+(38, 148, 38, 5, 'Highly recommended client'),
 
-(33,30,3,'Average work'),
-(33,40,4,'Good effort'),
+-- Job 41
+(41, 41, 151, 5, 'Highly professional'),
+(41, 151, 41, 4, 'Good communication'),
 
-(39,45,4,'Nice work overall'),
-(39,55,5,'Great quality'),
+-- Job 43
+(43, 43, 153, 5, 'Outstanding performance'),
+(43, 153, 43, 4, 'Reliable client'),
 
-(41,50,5,'Highly professional'),
-(41,60,4,'Good communication'),
+-- Job 46
+(46, 46, 156, 3, 'Work was acceptable'),
+(46, 156, 46, 4, 'Decent experience'),
 
-(43,55,5,'Fantastic delivery'),
-(43,65,4,'Very reliable'),
+-- Job 48
+(48, 48, 158, 5, 'Excellent delivery'),
+(48, 158, 48, 4, 'Nice working experience'),
 
-(45,60,4,'Great job'),
-(45,70,5,'Top performance'),
+-- Job 51
+(51, 51, 161, 4, 'Good job'),
+(51, 161, 51, 5, 'Great client'),
 
-(46,65,3,'Work was okay'),
-(46,75,4,'Good experience'),
+-- Job 53
+(53, 53, 163, 5, 'Very satisfied with the work'),
+(53, 163, 53, 4, 'Clear instructions'),
 
-(48,70,5,'Excellent execution'),
-(48,80,4,'Nice delivery'),
+-- Job 56
+(56, 56, 166, 4, 'Nice work'),
+(56, 166, 56, 5, 'Professional client'),
 
-(50,10,4,'Good communication'),
-(50,20,5,'Great job');
+-- Job 58
+(58, 58, 168, 5, 'Excellent execution'),
+(58, 168, 58, 4, 'Good collaboration'),
+
+-- Job 61
+(61, 61, 171, 5, 'Highly recommended'),
+(61, 171, 61, 4, 'Good experience'),
+
+-- Job 63
+(63, 63, 173, 4, 'Solid work'),
+(63, 173, 63, 5, 'Great client'),
+
+-- Job 66
+(66, 66, 176, 5, 'Fantastic job'),
+(66, 176, 66, 4, 'Smooth workflow'),
+
+-- Job 68
+(68, 68, 178, 5, 'Perfect execution'),
+(68, 178, 68, 4, 'Nice client');
+
 INSERT INTO Messages (sender_id, receiver_id, message_text) VALUES
 
 (5,120,'Hi, I am interested in your project'),
